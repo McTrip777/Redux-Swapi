@@ -12,3 +12,17 @@ export const CHARS_FAILURE = 'CHARS_FAILURE';
 // remember that now we have control over our thunk-based action creator
 
 
+export const getChars = () => dispatch => {
+    dispatch({ type: CHARS_FETCHING });
+    axios
+    .get('https://swapi.co/api/people/')
+    .then(res => {
+      dispatch({ type: CHARS_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({
+        type: CHARS_FAILURE,
+        payload: err.response.data.error.message
+      });
+    });
+};

@@ -1,6 +1,6 @@
-import CHARS_FETCHING from/* we need our action types here*/ "../actions";
-import CHARS_SUCCESS from/* we need our action types here*/ "../actions";
-import CHARS_FAILURE from/* we need our action types here*/ "../actions";
+import CHARS_FETCHING from "./actions";
+import CHARS_SUCCESS from "./actions";
+import CHARS_FAILURE from "./actions";
 // import {Character} from '../components/index'
 
 const initialState = {
@@ -9,7 +9,7 @@ const initialState = {
   error: ''
   // Array characters, Boolean fetching, null error.
 };
-export const charsReducer = (state = initialState, action) => {
+export function charsReducer(state = initialState, action) {
   switch (action.type) {
     // Fill me in with the important reducers
     // action types should be FETCHING, SUCCESS and FAILURE
@@ -37,3 +37,5 @@ export const charsReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export default charsReducer;

@@ -2,7 +2,7 @@ import React from "react";
 
 import Character from "./Character";
 
-const CharacterList = props => {
+export const CharacterList = props => {
   return (
     <ul>
       {props.characters.map(character => {
@@ -12,4 +12,5 @@ const CharacterList = props => {
   );
 };
 
-export default CharacterList;
+
+
