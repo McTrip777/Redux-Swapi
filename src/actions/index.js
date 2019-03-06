@@ -13,16 +13,20 @@ export const CHARS_FAILURE = 'CHARS_FAILURE';
 
 
 export const getChars = () => dispatch => {
-    dispatch({ type: CHARS_FETCHING });
+    dispatch({ 
+      type: CHARS_FETCHING 
+    });
     axios
     .get('https://swapi.co/api/people/')
-    .then(res => {
-      dispatch({ type: CHARS_SUCCESS, payload: res.data });
+    .then(({ data }) => {
+      dispatch({ type: CHARS_SUCCESS, 
+        payload: data.results 
+      });
     })
     .catch(err => {
       dispatch({
         type: CHARS_FAILURE,
-        payload: err.response.data.error.message
+        payload: err
       });
     });
 };

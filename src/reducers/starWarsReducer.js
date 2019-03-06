@@ -1,15 +1,16 @@
-import CHARS_FETCHING from "./actions";
-import CHARS_SUCCESS from "./actions";
-import CHARS_FAILURE from "./actions";
-// import {Character} from '../components/index'
+import { 
+  CHARS_FETCHING, 
+  CHARS_SUCCESS, 
+  CHARS_FAILURE 
+} from "../actions";
 
 const initialState = {
   characters: [],
-  isLoading: false,
-  error: ''
+  fetching: false,
+  error: null
   // Array characters, Boolean fetching, null error.
 };
-export function charsReducer(state = initialState, action) {
+export const charsReducer = (state = initialState, action) => {
   switch (action.type) {
     // Fill me in with the important reducers
     // action types should be FETCHING, SUCCESS and FAILURE
@@ -17,21 +18,21 @@ export function charsReducer(state = initialState, action) {
     case CHARS_FETCHING:
       return{
         ...state,
-        error: '',
-        inLoading: true,
+        error: null,
+        fetching: true,
       };
     case CHARS_SUCCESS:
       return{
         ...state,
-        error: '',
-        isLoading:false,
-        Characters: action.payload,
+        error: null,
+        fetching:false,
+        characters: action.payload
       }
     case CHARS_FAILURE:
       return{
         ...state,
         error: action.payload,
-        isLoading:false,
+        fetching:false,
       }
     default:
       return state;
